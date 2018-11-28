@@ -4,6 +4,7 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Type;
 import java.util.Set;
 
+
 import com.jarvis.cache.ICacheManager;
 import com.jarvis.cache.exception.CacheCenterConnectionException;
 import com.jarvis.cache.serializer.ISerializer;
@@ -19,7 +20,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public abstract class AbstractRedisCacheManager implements ICacheManager {
 
-    protected static final StringSerializer KEY_SERIALIZER = new StringSerializer();
+  protected static final StringSerializer KEY_SERIALIZER = new StringSerializer();
 
     /**
      * Hash的缓存时长：等于0时永久缓存；大于0时，主要是为了防止一些已经不用的缓存占用内存;hashExpire小于0时，则使用@Cache中设置的expire值（默认值为-1）。
@@ -109,7 +110,7 @@ public abstract class AbstractRedisCacheManager implements ICacheManager {
         }
         return res;
     }
-
+      
     @Override
     public void delete(Set<CacheKeyTO> keys) throws CacheCenterConnectionException {
         if (null == keys || keys.isEmpty()) {

@@ -1,5 +1,6 @@
 package com.jarvis.cache.redis;
 
+
 import com.jarvis.cache.exception.CacheCenterConnectionException;
 import com.jarvis.cache.serializer.ISerializer;
 import com.jarvis.cache.to.CacheKeyTO;
@@ -85,7 +86,6 @@ public class ShardedJedisCacheManager extends AbstractRedisCacheManager {
             pipeline.expire(key, hExpire);
             pipeline.sync();
         }
-    }
 
     @SuppressWarnings("unchecked")
     @Override
@@ -171,7 +171,6 @@ public class ShardedJedisCacheManager extends AbstractRedisCacheManager {
         } finally {
             shardedJedis.close();
         }
-    }
 
     private void delete(Pipeline pipeline, String cacheKey, String hfield) throws Exception {
         if (log.isDebugEnabled()) {
