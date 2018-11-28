@@ -3,7 +3,6 @@ package com.jarvis.cache.lock;
 import redis.clients.jedis.JedisCluster;
 
 /**
- * 
  * @author: jiayu.qiu
  */
 public class JedisClusterLock extends AbstractRedisLock {
@@ -11,12 +10,12 @@ public class JedisClusterLock extends AbstractRedisLock {
     private JedisCluster jedisCluster;
 
     public JedisClusterLock(JedisCluster jedisCluster) {
-        this.jedisCluster=jedisCluster;
+        this.jedisCluster = jedisCluster;
     }
 
     @Override
-    protected Long setnx(String key, String val) {
-        return this.jedisCluster.setnx(key, val);
+    protected Boolean setnx(String key, String val) {
+        return this.jedisCluster.setnx(key, val).intValue() == 1;
     }
 
     @Override
